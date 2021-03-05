@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/focal64"
 
-  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 9999, host: 9999 #tadinya 8080
+  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 8080, host: 8080 #tadinya 8080
 
   config.vm.provision "shell", inline: <<-SHELL
     # Update and upgrade the server packages.
@@ -23,15 +23,18 @@ Vagrant.configure("2") do |config|
     # Set Ubuntu Language
     sudo locale-gen en_GB.UTF-8
     # Install Python, SQLite and pip
-    sudo apt-get install -y python3-dev sqlite python-pip
+    sudo apt-get install -y python3-dev sqlite python3-pip
     # Upgrade pip to the latest version.
-    sudo pip install --upgrade pip
+    sudo pip3 install --upgrade pip
     # Install and configure python virtualenvwrapper.
-    sudo pip install virtualenvwrapper
+    sudo pip3 install virtualenvwrapper
     if ! grep -q VIRTUALENV_ALREADY_ADDED /home/vagrant/.bashrc; then
+        echo "alias python=python3" >> /home/vagrant/.bashrc
+        echo "alias pip=pip3" >> /home/vagrant/.bashrc
         echo "# VIRTUALENV_ALREADY_ADDED" >> /home/vagrant/.bashrc
         echo "WORKON_HOME=~/.virtualenvs" >> /home/vagrant/.bashrc
         echo "PROJECT_HOME=/vagrant" >> /home/vagrant/.bashrc
+        echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> /home/vagrant/.bashrc
         echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/vagrant/.bashrc
     fi
   SHELL
