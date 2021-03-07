@@ -1,0 +1,23 @@
+# DJANGO REST FRAMEWORK VIEWS
+
+1. APIView
+Is the most type of view we can use to build our API. It enables us describe
+the logic which makes our API endpoint. APIView allows us to define functions that
+match the standard HTTP methods:
+    - HTTP GET: to get one or more items
+    - HTTP POST: create an item
+    - HTTP PUT: update an item
+    - HTTP PATCH: partially update an item
+    - HTTP DELETE: delete an item
+APIView give us the most control over our application logic:
+    - Perfect for implementing complex logic
+    - Calling other APIs
+    - Working with local files
+
+When to use APIView?
+    - Need the full control over the logic, such as when running a very
+      complicated algorithm or updating multiple data sources in one API call
+      or when you're processing files and rendendering asynchronous response.
+    - When calling other external APIs/services in the same request
+    - Accessing local files or data
+      
