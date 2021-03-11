@@ -4,6 +4,8 @@ from . import views
 
 router = DefaultRouter()
 router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+router.register('profile', views.UserProfileViewSet)
+router.register('login', views.LogInViewSet, basename='login')
 #first parameter is name of API we want to call
 #second parameter is name of viewset that we want to assign to this router
 

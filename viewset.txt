@@ -1,0 +1,19 @@
+# Viewset
+
+Viewset allows us to write the logic for our endpoints. Instead of defining functions (map to HTTP), viewset accept functioons that map to common API object actions.
+LIST : for getting a list of objects
+CREATE : for creating new objects
+RETRIEVE : for getting a specific object
+UPDATE : updating an object
+PARTIAL UPDATE : for updating part of an object
+DESTROY : for deleting an object
+
+Viewsets takes care a lot of typical logic:
+- Perfect for writing APIs that performs standard database operation 
+- Fastest way to make a database interface with a database backend
+
+When should we use viewset?
+1. Need API that performs a simple create, read, update and delete (CRUD) operation on a database model
+2. Need a quick and simple API to manage predefined objects
+3. Need a very little custom logic additional to the viewsets features already provided by the django rest framework
+4. If API is working with a standard data structure

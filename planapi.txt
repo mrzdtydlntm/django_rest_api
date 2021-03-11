@@ -1,0 +1,23 @@
+Basic Requirement:
+1. Create new profile, include:
+   - Validate profile data
+
+2. List existing profiles:
+   - Search for profiles by email or name
+
+3. View specific profile ID
+
+4. Update my profile of logged in user:
+   - Update name/email address
+   - Change password
+
+5. Delete profile
+
+API URLs:
+- /api/profile/ ~ list all profiles
+   *HTTP GET (list profiles)
+   *HTTP POST (create profile)
+- /api/profile/<profile_id>/ ~ manage specific profile
+   *HTTP GET (view specific profile)
+   *HTTP PUT/PATCH (update profile)
+   *HTTP DELETE (remove profile)
