@@ -5,3 +5,4 @@ from . import models
 
 admin.site.register(models.UserProfile)
 #pass in our model to register with django admin
+admin.site.register(models.ProfileFeedItem)

@@ -1,0 +1,18 @@
+Basic features API requires:
+   - Creating new feed items:
+      - logged in user only (authenticated users)
+   - Updating feed item:
+      - logged in user only (authenticated users)
+   - Delete profile feed item:
+      - logged in user only (authenticated users)
+   - Viewing other profile status updates:
+      - all users (that logged in or not logged in)
+
+URLs for API:
+   - /api/feed/ ~ list all feed items
+      - HTTP GET (list feed items)
+      - HTTP POST (creating new feed items for logged user)
+   - /api/feed/<feed_item_id>/ ~ manage specific feed items
+      - HTTP GET (get the feed item)
+      - HTTP PUT/PATCH (update feed item)
+      - HTTP DELETE (delete feed item)

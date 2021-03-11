@@ -43,3 +43,15 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         #used it when needs to convert the object to a string
         return self.email
+
+class ProfileFeedItem(models.Model):
+    #profile status update
+    user_profile = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    #foreign key creates a link from this model to another model in databases
+    #second parameter = what we want to do when object is deleted
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True) #store date and time automatically
+    
+    def __str__(self):
+        #return the model as a string
+        return self.status_text

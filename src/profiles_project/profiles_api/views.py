@@ -7,6 +7,7 @@ from . import serializers, models, permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
 
 # Create your views here.
 
@@ -96,9 +97,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
 
-class LogInViewSet(viewsets.ViewSet):
-    #checks email and password and returns an authtoken
-    serializer_class = AuthTokenSerializer
-    def create(self, request):
-        #use the ObtainAuthToken APIView to validate the create a token
-        return ObtainAuthToken().post(request)
+class UserLoginApiView(ObtainAuthToken):
+    """Handle creating user authentication tokens"""
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
