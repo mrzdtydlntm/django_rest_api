@@ -15,3 +15,11 @@ class UpdateOwnProfile(permissions.BasePermission):
         #checking that the object the user is trying to check has the
         #same id of the user that's currently authenticated in the system
     
+class PostOwnStatus(permissions.BasePermission):
+    #allow user to update their own status
+    def has_object_permission(self, request, view, obj):
+        #checks the user is trying to update their own status
+        if request.method in permissions.SAFE_METHODS:
+            return True #can edit their own statuses but not for other people statuses
+        return obj.user_profile.id == request.user.id #check if the user profile id match request
+    
